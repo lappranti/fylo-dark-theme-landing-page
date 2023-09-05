@@ -1,0 +1,723 @@
+@import "./variables";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  * {
+    transition: all 0.4s ease-in-out;
+  }
+
+  &.menu-visible {
+    height: 100vh;
+    overflow-y: hidden;
+  }
+}
+
+main {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 137px;
+
+  background-color: $Dark-Blue-intro-and-email-sign-up-background;
+  background-image: url("../assets/bg-curvy-desktop.svg");
+  background-position: bottom;
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
+  padding-bottom: 360px;
+
+  @media only screen and (max-width: 400px) {
+    padding-bottom: 260px;
+  }
+}
+
+.wrapper {
+  max-width: $Desktop;
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+
+  @media only screen and (max-width: 400px) {
+    gap: 48px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 73px;
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+
+    a {
+      @include font("r");
+      font-size: 16px;
+      font-weight: 400;
+      color: $White;
+
+      &:hover {
+        text-decoration-line: underline;
+      }
+    }
+
+    &.nav-mobile {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+
+    .line {
+      width: 30px;
+      height: 3px;
+      background-color: $White;
+      margin: 3px 0;
+    }
+
+    &.active {
+      .line:nth-child(1) {
+        transform: rotate(-45deg) translate(-7px, 5px);
+      }
+
+      .line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .line:nth-child(3) {
+        transform: rotate(45deg) translate(-7px, -5px);
+      }
+    }
+  }
+  @media only screen and (max-width: $Desktop) {
+    padding: 73px 24px 0;
+  }
+  @media only screen and (max-width: 768px) {
+    position: relative;
+    padding: 24px 24px 16px;
+    nav {
+      &.nav-mobile {
+        display: flex;
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: calc(100vh - 100%);
+
+        background-color: $Dark-Blue-intro-and-email-sign-up-background;
+        opacity: 0.98;
+        align-items: center;
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 32px;
+        border-top: 1px solid $White;
+
+        &.hidden {
+          transform-origin: top;
+          transform: scaleY(0);
+        }
+      }
+      &.nav-desktop {
+        display: none;
+      }
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .logo {
+      max-width: 80px;
+      height: 24px;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    nav {
+      gap: 24px;
+    }
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+  .title {
+    @include font("r");
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px;
+    color: $White;
+    max-width: 735px;
+    text-align: center;
+
+    margin-top: 4px;
+  }
+
+  .description {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    @include font("os");
+    color: $White;
+    text-align: center;
+    max-width: 590px;
+  }
+
+  button {
+    width: 280px;
+    height: 56px;
+    flex-shrink: 0;
+
+    background-image: url("../assets/btnbg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    border-radius: 28px;
+    border: none;
+    background-color: none;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: $White;
+    @include font("r");
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  @media only screen and (max-width: $Desktop) {
+    padding: 0 24px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    img {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    gap: 16px;
+    .title {
+      font-size: 24px;
+      line-height: 36px;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    button {
+      margin-top: 16px;
+    }
+  }
+}
+
+.security {
+  display: flex;
+  flex-direction: column;
+  gap: 79px;
+
+  margin-top: calc(156px - 137px);
+  padding: 0 24px;
+
+  .top,
+  .bottom {
+    display: flex;
+    justify-content: center;
+    gap: 147px;
+  }
+
+  .element {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    .title {
+      @include font("r");
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      color: $White;
+    }
+    .description {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: center;
+      @include font("os");
+      color: $White;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .top,
+    .bottom {
+      justify-content: space-between;
+      gap: 30px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .top,
+    .bottom {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 80px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}
+
+.stay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    color: $White;
+
+    .title {
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 50px;
+
+      max-width: 506px;
+      margin-bottom: 3px;
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+
+      max-width: 563px;
+    }
+
+    .link {
+      margin-top: 8px;
+      a {
+        font-size: 16px;
+        font-weight: 400;
+        color: $White;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $Desktop) {
+    padding: 0 24px;
+
+    .left,
+    .right {
+      flex: 1;
+
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 48px;
+  }
+  @media only screen and (max-width: 600px) {
+    .right {
+      .title {
+        font-size: 24px;
+        line-height: 30px;
+        margin: 0;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 21px;
+      }
+
+      .link {
+        margin: 0;
+
+        a {
+          font-size: 12px;
+          color: $Cyan-inside-call-to-action-gradient;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .right {
+      .title {
+        font-size: 18px;
+        list-style: 24px;
+      }
+    }
+  }
+}
+
+.testimonial {
+  display: flex;
+  gap: 40px;
+
+  .card {
+    flex: 1;
+    background-color: $Dark-Blue-testimonials-background;
+
+    padding: 40px 26px 26px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    color: $White;
+    @include font("os");
+
+    &:first-child {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -32px;
+        left: -8px;
+        width: 100%;
+        height: 100%;
+
+        // background-color: red;
+        background-image: url("../assets/bg-quotes.png");
+        background-position: top left;
+        background-size: auto;
+        background-repeat: no-repeat;
+        z-index: 0;
+      }
+    }
+  }
+
+  .top {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    img {
+      width: 24px;
+      border-radius: 50%;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 12px; /* 120% */
+      letter-spacing: 0.5px;
+    }
+    .detail {
+      font-size: 7px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 10px;
+    }
+  }
+
+  @media only screen and (max-width: $Desktop) {
+    padding: 0 24px;
+  }
+
+  @media only screen and (max-width: 850px) {
+    .top {
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 18px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    .top {
+      max-width: 515px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .card {
+      padding: 20px;
+    }
+  }
+}
+
+footer {
+  background-color: $Dark-Blue-footer-background;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: flex-end;
+
+  //height: 440px;
+  padding-bottom: 53px;
+
+  .top {
+    position: relative;
+    top: calc(-441px + 325px);
+
+    margin: 0 auto;
+    max-width: 863px;
+    width: 100%;
+    height: 275px;
+    background-color: $Dark-Blue-intro-and-email-sign-up-background;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .title {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 48px;
+      color: $White;
+      @include font("r");
+      text-align: center;
+
+      @media only screen and (max-width: 400px) {
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+
+    .text {
+      max-width: 673px;
+      text-align: center;
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+      @include font("os");
+      color: $White;
+    }
+
+    .input {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+
+      @media only screen and (max-width: 400px) {
+        width: 100%;
+        input,
+        button {
+          width: 100%;
+        }
+      }
+    }
+
+    input {
+      max-width: 480px;
+      height: 48px;
+      flex-shrink: 0;
+
+      background-color: $White;
+
+      border: none;
+      border-radius: 25px;
+
+      padding: 16px 38px;
+
+      font-size: 12px;
+      font-weight: 400;
+      color: #c0c0c0;
+
+      &::placeholder {
+        font-size: 12px;
+        font-weight: 400;
+        color: #c0c0c0;
+      }
+    }
+
+    button {
+      width: 200px;
+      height: 48px;
+      flex-shrink: 0;
+
+      border-radius: 20px;
+      background-color: $Blue-inside-call-to-action-gradient;
+      border: none;
+
+      font-size: 14px;
+      font-weight: 700;
+      color: $White;
+    }
+
+    @media only screen and (max-width: 768px) {
+      height: auto;
+      padding: 40px 24px 37px;
+      .input {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 52px;
+
+    color: $White;
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .location {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+
+      .text {
+        max-width: 340px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        @include font("os");
+      }
+    }
+
+    .tel,
+    .nav,
+    .contrat {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      p {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+    }
+
+    .nav,
+    .contrat {
+      > * {
+        &:hover {
+          cursor: pointer;
+          font-weight: 700px;
+        }
+      }
+    }
+
+    .social {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+
+      span {
+        display: block;
+        height: 31px;
+        width: 31px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border: 1px solid $White;
+        border-radius: 50%;
+
+        &:hover {
+          cursor: pointer;
+          border-color: $Cyan-inside-call-to-action-gradient;
+
+          i {
+            color: $Cyan-inside-call-to-action-gradient;
+          }
+        }
+      }
+    }
+
+    @media only screen and (max-width: $Desktop) {
+      padding: 0 24px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      //align-items: center;
+
+      .links {
+        gap: 50px;
+        flex-direction: column;
+        //align-items: center;
+
+        .social {
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
